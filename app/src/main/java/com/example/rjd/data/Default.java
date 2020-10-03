@@ -2,7 +2,9 @@ package com.example.rjd.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Default {
+import java.io.Serializable;
+
+public class Default  implements Serializable {
     @SerializedName("url")
     private String url;
 

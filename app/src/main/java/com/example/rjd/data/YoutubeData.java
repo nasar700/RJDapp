@@ -2,10 +2,11 @@ package com.example.rjd.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YoutubeData {
+public class YoutubeData implements Serializable {
 
     @SerializedName("nextPageToken")
     private String nextPageToken;

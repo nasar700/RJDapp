@@ -9,19 +9,19 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.rjd.R;
-import com.example.rjd.data.ClickListener;
+import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.data.Item;
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     private ArrayList<Item> listData;
-    private ClickListener clickListener;
+    private VideoClickListener videoClickListener;
 
 
-    public HomeAdapter(ArrayList<Item> listData, ClickListener clickListener){
+    public HomeAdapter(ArrayList<Item> listData, VideoClickListener videoClickListener){
         this.listData = listData;
-        this.clickListener = clickListener;
+        this.videoClickListener = videoClickListener;
     }
 
     public void updateData(ArrayList<Item> listData){
@@ -49,7 +49,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickListener.onClick(data);
+                videoClickListener.onClick(data);
             }
         });
     }

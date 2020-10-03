@@ -6,18 +6,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.rjd.R;
-import com.example.rjd.data.ClickListener;
+import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.data.Data;
 import java.util.ArrayList;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
     private ArrayList<Data> listData;
-    private ClickListener clickListener;
+    private VideoClickListener videoClickListener;
 
-    public ImageAdapter(ArrayList<Data> listData, ClickListener clickListener){
+    public ImageAdapter(ArrayList<Data> listData, VideoClickListener videoClickListener){
         this.listData = listData;
-        this.clickListener = clickListener;
+        this.videoClickListener = videoClickListener;
     }
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {

@@ -1,5 +1,5 @@
 package com.example.rjd.data;
 
-public interface ClickListener {
+public interface VideoClickListener  {
     void onClick(Item data);
 }

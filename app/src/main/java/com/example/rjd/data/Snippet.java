@@ -2,7 +2,9 @@ package com.example.rjd.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Snippet {
+import java.io.Serializable;
+
+public class Snippet  implements Serializable {
     @SerializedName("title")
     private String title;
 

@@ -3,29 +3,34 @@ package com.example.rjd.more;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rjd.data.ClickListener;
-import com.example.rjd.data.Data;
+import com.bumptech.glide.Glide;
+import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.R;
+import com.example.rjd.data.Item;
 
 import java.util.ArrayList;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
-    private ArrayList<Data> listData;
-    private ClickListener clickListener;
+    private ArrayList<Item> listData;
+    private VideoClickListener videoClickListener;
 
 
-    public VideoAdapter(ArrayList<Data> listData, ClickListener clickListener){
+    public VideoAdapter(ArrayList<Item> listData, VideoClickListener videoClickListener){
         this.listData = listData;
-        this.clickListener = clickListener;
+        this.videoClickListener = videoClickListener;
     }
+
+    public void updateData(ArrayList<Item> listData){
+        this.listData = listData;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
@@ -36,11 +41,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder( ViewHolder holder, int position) {
-        final Data data = listData.get(position);
+        final Item data = listData.get(position);
 
-        holder.textTitle.setText(data.getTitle());
-       // holder.textDescription.setText(data.getDesciption());
-        //holder.icon.setImageResource(data.getImgId());
+        holder.textTitle.setText(data.getSnippet().getTitle());
+        Glide.with(holder.icon.getContext())
+                .load(data.getSnippet().getThumbnails().getDefaults().getUrl())
+                .into(holder.icon);
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +64,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textTitle;
-       // public TextView textDescription;
         public ImageView icon;
         public RelativeLayout relativeLayout;
 
@@ -66,7 +71,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         public ViewHolder(View v) {
             super(v);
             this.textTitle = (TextView)v.findViewById(R.id.title);
-           // this.textDescription = (TextView)v.findViewById(R.id.description);
             this.icon = (ImageView) v.findViewById(R.id.icon);
             relativeLayout = (RelativeLayout)v.findViewById(R.id.relative_layout);
         }

@@ -2,7 +2,6 @@ package com.example.rjd.more;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +13,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rjd.FullScreenImage;
-import com.example.rjd.data.ClickListener;
+import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.data.Data;
 import com.example.rjd.R;
 import com.example.rjd.data.Item;
 
 import java.util.ArrayList;
 
-public class ImageFragment extends Fragment implements ClickListener {
+public class ImageFragment extends Fragment implements VideoClickListener {
 
 
     @Override
@@ -38,19 +37,14 @@ public class ImageFragment extends Fragment implements ClickListener {
     private void init(View view){
         ArrayList<Data> dataList = new ArrayList<>();
 
-        Data data1 = new Data();
-        data1.setImgId("");
-        data1.setTitle("Title1");
-        data1.setDesciption("Desc1");
-        dataList.add(data1);
-        Data data2 = new Data();
-        data2.setImgId("");
-        data2.setTitle("Title2");
-        data2.setDesciption("Desc2");
-        dataList.add(data2);
+        for (int i = 0;i<20;i++){
+            Data data1 = new Data();
+            data1.setImgId("");
+            data1.setTitle("Title"+i);
+            dataList.add(data1);
+        }
 
-
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         ImageAdapter adapter = new ImageAdapter(dataList,this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));

@@ -2,7 +2,9 @@ package com.example.rjd.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Thumbnails {
+import java.io.Serializable;
+
+public class Thumbnails implements Serializable {
     @SerializedName("default")
     private Default defaults;
 

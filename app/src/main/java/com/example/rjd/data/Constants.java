@@ -8,4 +8,6 @@ public interface Constants {
     String fields = "items(id(videoId),snippet(title,thumbnails(default(url)))),pageInfo,nextPageToken";
     String order = "date";
     String maxResults_50 = "50";
+    String videoList = "videolist";
+    String videoId = "videoidist";
 }
