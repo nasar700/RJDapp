@@ -10,6 +10,10 @@
         android:id="@+id/navigation_image"
         android:icon="@drawable/ic_baseline_image_24"
         android:title="Image"/>
+    <item
+        android:id="@+id/navigation_share"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="Share"/>
 
 
 </menu>

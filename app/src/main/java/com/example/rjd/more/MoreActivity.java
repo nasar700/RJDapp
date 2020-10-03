@@ -1,7 +1,10 @@
 package com.example.rjd.more;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,13 +34,33 @@ public class MoreActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
             case R.id.navigation_video:
                 fragment = new VideoFragment();
-                break;
+                return loadFragment(fragment);
+
             case R.id.navigation_image:
                 fragment = new ImageFragment();
-                break;
-        }
+                return loadFragment(fragment);
 
-        return loadFragment(fragment);
+            case R.id.navigation_share:
+                onShare();
+                return true;
+
+                default:
+                return true;
+        }
+    }
+
+    private void onShare(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT , "https://play.google.com/store/apps/details?id="+"com.example.rjd");
+        intent.setType("text/plain");
+
+        try {
+           startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this , "$appName doesn't installed." , Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this , "$appName doesn't installed." , Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean loadFragment(Fragment fragment) {

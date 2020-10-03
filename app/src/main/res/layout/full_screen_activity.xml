@@ -5,9 +5,19 @@
     android:layout_height="match_parent">
 
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_marginBottom="3dp"
+        android:layout_alignParentBottom="true"/>
+
     <ImageView
+        android:layout_above="@id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/image_fullscreen"
-        android:scaleType="center"/>
+        android:scaleType="center"
+        />
 </RelativeLayout>

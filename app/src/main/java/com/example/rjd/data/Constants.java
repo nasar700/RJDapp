@@ -10,4 +10,7 @@ public interface Constants {
     String maxResults_50 = "50";
     String videoList = "videolist";
     String videoId = "videoidist";
+    String imageList = "imagelist";
+    String imageId = "imageiid";
+
 }

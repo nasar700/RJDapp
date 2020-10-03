@@ -65,21 +65,18 @@ public class HomeActivity extends AppCompatActivity implements VideoClickListene
 
     void fetchVideoData(){
         progress.setVisibility(View.VISIBLE);
-        apiInterface = APIClient.getClient().create(APIInterface.class);
+        apiInterface = APIClient.getClientMock().create(APIInterface.class);
 
-        Call<YoutubeData> call = apiInterface.fetchVideoList(Constants.part,
-                Constants.channelId, Constants.maxResults_20,
-                Constants.key, Constants.fields, Constants.order);
+        Call<YoutubeData> call = apiInterface.fetchVideoList();
 
         call.enqueue(new Callback<YoutubeData>() {
 
             @Override
             public void onResponse(Call<YoutubeData> call, Response<YoutubeData> response) {
                 progress.setVisibility(View.GONE);
-                Log.d("===Response", response.body().getNextPageToken());
+//                Log.d("===Response", response.body().getNextPageToken());
                 youtubeData = response.body();
-                adapter.updateData(youtubeData.getItems());
-                adapter.notifyDataSetChanged();
+                filterData();
             }
             @Override
             public void onFailure(Call<YoutubeData> call, Throwable t) {
@@ -89,7 +86,20 @@ public class HomeActivity extends AppCompatActivity implements VideoClickListene
         });
     }
 
-
+   private void filterData(){
+        if(youtubeData.getItems().size()>=20){
+            ArrayList<Item> filterList = new ArrayList<>();
+           for(int i = 0;i<20;i++){
+               filterList.add(youtubeData.getItems().get(i));
+           }
+           adapter.updateData(filterList);
+           adapter.notifyDataSetChanged();
+       }else{
+           adapter.updateData(youtubeData.getItems());
+           adapter.notifyDataSetChanged();
+       }
+    }
+    
     @Override
     public void onClick(Item data) {
         Log.d("Data: ",data.getSnippet().getTitle());

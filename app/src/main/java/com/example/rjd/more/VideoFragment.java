@@ -60,18 +60,16 @@ public class VideoFragment extends Fragment implements VideoClickListener {
 
     void fetchVideoData(){
         progress.setVisibility(View.VISIBLE);
-        apiInterface = APIClient.getClient().create(APIInterface.class);
+        apiInterface = APIClient.getClientMock().create(APIInterface.class);
 
-        Call<YoutubeData> call = apiInterface.fetchVideoList(Constants.part,
-                Constants.channelId, Constants.maxResults_50,
-                Constants.key, Constants.fields, Constants.order);
+        Call<YoutubeData> call = apiInterface.fetchVideoList();
 
         call.enqueue(new Callback<YoutubeData>() {
 
             @Override
             public void onResponse(Call<YoutubeData> call, Response<YoutubeData> response) {
                 progress.setVisibility(View.GONE);
-                Log.d("===Response", response.body().getNextPageToken());
+//                Log.d("===Response", response.body().getNextPageToken());
                 youtubeData = response.body();
                 adapter.updateData(youtubeData.getItems());
                 adapter.notifyDataSetChanged();

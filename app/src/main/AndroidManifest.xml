@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity" >
+        <activity android:name=".SplashActivity" android:theme="@style/AppThemeWithNoTitle" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".home.HomeActivity"/>
         <activity android:name=".more.MoreActivity"/>
-        <activity android:name=".FullScreenImage"/>
+        <activity android:name=".FullScreenImage" android:theme="@style/AppThemeWithNoTitle"/>
         <activity android:name=".youtube.VideoDetailActivity"/>
     </application>
 

@@ -1,42 +1,39 @@
-package com.example.rjd.more;
+package com.example.rjd.image;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.rjd.R;
-import com.example.rjd.data.ImageClickListener;
-import com.example.rjd.data.Item;
-import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.data.Data;
+import com.example.rjd.data.ImageClickListener;
+import com.example.rjd.more.ImageAdapter;
+
 import java.util.ArrayList;
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
+public class ImageDetailAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
     private ArrayList<String> listData;
     private ImageClickListener videoClickListener;
 
-    public ImageAdapter(ArrayList<String> listData, ImageClickListener videoClickListener){
+    public ImageDetailAdapter(ArrayList<String> listData, ImageClickListener videoClickListener){
         this.listData = listData;
         this.videoClickListener = videoClickListener;
     }
-    public void updateData(ArrayList<String> listData){
-        this.listData = listData;
-    }
-
     @Override
-    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public ImageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem = layoutInflater.inflate(R.layout.image_layout,parent,false);
-        ViewHolder viewHolder = new ViewHolder(listItem);
+        View listItem = layoutInflater.inflate(R.layout.image_detail_adapter,parent,false);
+        ImageAdapter.ViewHolder viewHolder = new ImageAdapter.ViewHolder(listItem);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder( ViewHolder holder, int position) {
+    public void onBindViewHolder(ImageAdapter.ViewHolder holder, int position) {
         final String url = listData.get(position);
 
         Glide.with(holder.icon.getContext())
