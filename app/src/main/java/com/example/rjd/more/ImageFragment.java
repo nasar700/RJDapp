@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rjd.FullScreenImage;
+import com.example.rjd.data.ImageClickListener;
 import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.data.Data;
 import com.example.rjd.R;
@@ -20,7 +21,7 @@ import com.example.rjd.data.Item;
 
 import java.util.ArrayList;
 
-public class ImageFragment extends Fragment implements VideoClickListener {
+public class ImageFragment extends Fragment implements ImageClickListener {
 
 
     @Override
@@ -52,7 +53,7 @@ public class ImageFragment extends Fragment implements VideoClickListener {
     }
 
     @Override
-    public void onClick(Item data) {
+    public void onClick(String data) {
        // Log.d("Data: ",data.getTitle());
         Intent intent = new Intent(getActivity(), FullScreenImage.class);
         startActivity(intent);

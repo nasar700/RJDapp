@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.rjd.R;
+import com.example.rjd.data.ImageClickListener;
 import com.example.rjd.data.VideoClickListener;
 import com.example.rjd.data.Data;
 import java.util.ArrayList;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
     private ArrayList<Data> listData;
-    private VideoClickListener videoClickListener;
+    private ImageClickListener videoClickListener;
 
-    public ImageAdapter(ArrayList<Data> listData, VideoClickListener videoClickListener){
+    public ImageAdapter(ArrayList<Data> listData, ImageClickListener videoClickListener){
         this.listData = listData;
         this.videoClickListener = videoClickListener;
     }
@@ -35,7 +36,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // clickListener.onClick(data);
+                videoClickListener.onClick("");
             }
         });
     }

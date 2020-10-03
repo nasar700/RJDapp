@@ -50,10 +50,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //clickListener.onClick(data);
+                videoClickListener.onClick(data);
             }
         });
 
+        if(position%2==0){
+            holder.relativeLayout.setBackgroundColor(holder.icon.getContext().getResources().getColor(R.color.colorGray));
+        }else {
+            holder.relativeLayout.setBackgroundColor(holder.icon.getContext().getResources().getColor(R.color.colorWhite));
+        }
 
     }
 

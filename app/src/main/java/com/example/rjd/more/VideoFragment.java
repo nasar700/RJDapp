@@ -1,5 +1,6 @@
 package com.example.rjd.more;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.example.rjd.data.Item;
 import com.example.rjd.data.YoutubeData;
 import com.example.rjd.network.APIClient;
 import com.example.rjd.network.APIInterface;
+import com.example.rjd.youtube.VideoDetailActivity;
 
 import java.util.ArrayList;
 
@@ -32,7 +34,7 @@ public class VideoFragment extends Fragment implements VideoClickListener {
     private APIInterface apiInterface;
     private VideoAdapter adapter;
     private ProgressBar progress;
-
+    private YoutubeData youtubeData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -70,7 +72,8 @@ public class VideoFragment extends Fragment implements VideoClickListener {
             public void onResponse(Call<YoutubeData> call, Response<YoutubeData> response) {
                 progress.setVisibility(View.GONE);
                 Log.d("===Response", response.body().getNextPageToken());
-                adapter.updateData(response.body().getItems());
+                youtubeData = response.body();
+                adapter.updateData(youtubeData.getItems());
                 adapter.notifyDataSetChanged();
             }
             @Override
@@ -83,6 +86,10 @@ public class VideoFragment extends Fragment implements VideoClickListener {
 
     @Override
     public void onClick(Item data) {
-       // Log.d("Data: ",data.getTitle());
+        Log.d("Data: ",data.getSnippet().getTitle());
+        Intent intent = new Intent(getActivity(), VideoDetailActivity.class);
+        intent.putExtra(Constants.videoId,data.getId().getVideoId());
+        intent.putExtra(Constants.videoList,youtubeData);
+        startActivity(intent);
     }
 }
