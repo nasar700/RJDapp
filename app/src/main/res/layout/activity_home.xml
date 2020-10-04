@@ -4,12 +4,21 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/mainLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:background="@color/colorPrimary"
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@id/mainLayout"
         android:text="For More Videos &amp; Photos Click Here"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
@@ -29,7 +38,7 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/"/>
+        android:indeterminateTint="@color/colorPrimary"/>
 
 
 </RelativeLayout>

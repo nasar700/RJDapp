@@ -4,26 +4,52 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <com.google.android.material.bottomnavigation.BottomNavigationView
-       android:id="@+id/bottomnav"
-       android:fitsSystemWindows="true"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_alignParentBottom="true"
-       android:layout_marginStart="0dp"
-       android:layout_marginEnd="0dp"
-       app:itemBackground="@color/colorPrimary"
-       app:itemIconTint="@color/design_default_color_on_primary"
-       app:itemTextColor="@color/design_default_color_on_primary"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintLeft_toLeftOf="parent"
-       app:layout_constraintRight_toRightOf="parent"
-       app:menu="@menu/menu" />
-
    <FrameLayout
        android:id="@+id/container"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       android:layout_above="@+id/bottom"
        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:id="@+id/bottom"
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+
+
+      <com.google.android.material.bottomnavigation.BottomNavigationView
+          android:id="@+id/bottomnav"
+          android:fitsSystemWindows="true"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_above="@id/mainLayout"
+          android:layout_marginStart="0dp"
+          android:layout_marginEnd="0dp"
+          app:itemBackground="@color/colorPrimary"
+          app:itemIconTint="@color/design_default_color_on_primary"
+          app:itemTextColor="@color/design_default_color_on_primary"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:menu="@menu/menu" />
+
+      <LinearLayout
+          android:gravity="center"
+          android:orientation="vertical"
+          android:id="@+id/mainLayout"
+          android:layout_centerHorizontal="true"
+          android:layout_alignParentBottom="true"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+   </LinearLayout>
+
+
+
+
 
 </RelativeLayout>
