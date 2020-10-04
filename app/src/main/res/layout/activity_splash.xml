@@ -8,8 +8,8 @@
         android:id="@+id/image_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+     android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:src="@drawable/cat"/>
+        android:src="@drawable/rjd1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
