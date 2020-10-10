@@ -13,11 +13,12 @@ public interface Constants {
     String imageList = "imagelist";
     String imageId = "imageiid";
 
-//     String ADMOB_BANNER = " ca-app-pub-9128294353107334/1302413196";
-//     String ADMOB_INTERSTITIAL = "ca-app-pub-9128294353107334/8606188148";
+//    //live ads
+     String ADMOB_BANNER = " ca-app-pub-9128294353107334/1302413196";
+     String ADMOB_INTERSTITIAL = "ca-app-pub-9128294353107334/8606188148";
 
 //test add
-    String ADMOB_BANNER = "ca-app-pub-3940256099942544/6300978111";
-    String ADMOB_INTERSTITIAL = "ca-app-pub-3940256099942544/1033173712";
+//    String ADMOB_BANNER = "ca-app-pub-3940256099942544/6300978111";
+//    String ADMOB_INTERSTITIAL = "ca-app-pub-3940256099942544/1033173712";
 
 }

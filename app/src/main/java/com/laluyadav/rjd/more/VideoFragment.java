@@ -85,7 +85,6 @@ public class VideoFragment extends Fragment implements VideoClickListener {
 
     @Override
     public void onClick(Item data) {
-        AdsManagerUtil.showInterstitialAd();
         Log.d("Data: ",data.getSnippet().getTitle());
         Intent intent = new Intent(getActivity(), VideoDetailActivity.class);
         intent.putExtra(Constants.videoId,data.getId().getVideoId());

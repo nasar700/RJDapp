@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 public class YoutubeData implements Serializable {
 
+    @SerializedName("limit")
+    private int limit;
+
     @SerializedName("nextPageToken")
     private String nextPageToken;
 
@@ -28,5 +31,13 @@ public class YoutubeData implements Serializable {
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
     }
 }

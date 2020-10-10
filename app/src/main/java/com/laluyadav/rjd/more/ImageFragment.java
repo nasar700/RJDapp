@@ -60,7 +60,6 @@ public class ImageFragment extends Fragment implements ImageClickListener {
 
     @Override
     public void onClick(String data) {
-        AdsManagerUtil.showInterstitialAd();
         Intent intent = new Intent(getActivity(), FullScreenImage.class);
         intent.putExtra(Constants.imageId,data);
         intent.putExtra(Constants.imageList,imageList);

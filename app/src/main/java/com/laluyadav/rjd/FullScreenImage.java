@@ -26,6 +26,7 @@ public class FullScreenImage extends AppCompatActivity implements ImageClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_screen_activity);
+        AdsManagerUtil.showInterstitialAd();
         showBanner();
         initView();
        showData();

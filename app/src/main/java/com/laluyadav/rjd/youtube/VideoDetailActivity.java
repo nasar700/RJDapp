@@ -100,6 +100,7 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_detail);
+        AdsManagerUtil.showInterstitialAd();
         showBanner();
 
         showData();

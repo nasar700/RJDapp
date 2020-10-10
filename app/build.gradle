@@ -1,23 +1,44 @@
 apply plugin: 'com.android.application'
 
+//Value definitions
+def PropertiesFile = "gradle.properties"
+def PropertyVersionName = "version"
+def PropertyVersionCode = "versionCode"
+
+// Init Version Properties file
+Properties props = new Properties()
+props.load(new FileInputStream(file(PropertiesFile)))
+def manifestVersionCode = props.getProperty(PropertyVersionCode).toInteger()
+def manifestVersionName = props.getProperty(PropertyVersionName)
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.rjd"
+        applicationId "com.laluyadav.rjd"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 29
+        versionCode manifestVersionCode
+        versionName manifestVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keys/rjd.jks")
+            storePassword "rjd.5173"
+            keyAlias "rjdkey"
+            keyPassword "rjd.5173"
+            v2SigningEnabled false
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -35,6 +56,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'com.google.android.gms:play-services-ads:19.3.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.android.volley:volley:1.1.1'
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'

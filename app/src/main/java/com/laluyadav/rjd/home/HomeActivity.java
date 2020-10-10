@@ -35,11 +35,11 @@ public class HomeActivity extends AppCompatActivity implements VideoClickListene
     private ProgressBar progress;
     private YoutubeData youtubeData;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         AdsManagerUtil.showInterstitialAd();
         showBanner();
         initView();
@@ -98,9 +98,9 @@ public class HomeActivity extends AppCompatActivity implements VideoClickListene
     }
 
    private void filterData(){
-        if(youtubeData.getItems().size()>=20){
+        if(youtubeData.getItems().size()>=youtubeData.getLimit()){
             ArrayList<Item> filterList = new ArrayList<>();
-           for(int i = 0;i<20;i++){
+           for(int i = 0;i<youtubeData.getLimit();i++){
                filterList.add(youtubeData.getItems().get(i));
            }
            adapter.updateData(filterList);
@@ -113,7 +113,6 @@ public class HomeActivity extends AppCompatActivity implements VideoClickListene
     
     @Override
     public void onClick(Item data) {
-        AdsManagerUtil.showInterstitialAd();
         Log.d("Data: ",data.getSnippet().getTitle());
         Intent intent = new Intent(this, VideoDetailActivity.class);
         intent.putExtra(Constants.videoId,data.getId().getVideoId());

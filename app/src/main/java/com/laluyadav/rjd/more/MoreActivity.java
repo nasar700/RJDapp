@@ -23,6 +23,7 @@ public class MoreActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
+        AdsManagerUtil.showInterstitialAd();
         showBanner();
         bottomNavigationView = findViewById(R.id.bottomnav);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -55,10 +56,10 @@ public class MoreActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
     }
-
+    //https://play.google.com/store/apps/details?id=com.example.rjd
     private void onShare(){
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT , "https://play.google.com/store/apps/details?id="+"com.example.rjd");
+        intent.putExtra(Intent.EXTRA_TEXT , "https://play.google.com/store/apps/details?id="+"com.laluyadav.rjd");
         intent.setType("text/plain");
 
         try {
