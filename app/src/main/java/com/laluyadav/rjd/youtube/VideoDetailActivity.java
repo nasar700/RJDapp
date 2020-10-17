@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.laluyadav.rjd.R;
 import com.laluyadav.rjd.data.Constants;
 import com.laluyadav.rjd.data.Item;
@@ -112,6 +110,18 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
         AdsManagerUtil.showAdMObBanner(this, adsMobBanner);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
     private void showData(){
         if(getIntent().getExtras() != null){
             videoId = getIntent().getExtras().getString(Constants.videoId);
@@ -130,7 +140,7 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
         this.pDialog.setMessage("Please wait...");
         this.pDialog.setCancelable(false);
         this.youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-        this.youTubeView.initialize(Constants.key, this);
+        this.youTubeView.initialize(getString(R.string.key), this);
         this.playerStateChangeListener = new MyPlayerStateChangeListener();
         this.playbackEventListener = new MyPlaybackEventListener();
     }
@@ -161,7 +171,7 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
-            getYouTubePlayerProvider().initialize(Constants.key, this);
+            getYouTubePlayerProvider().initialize(getString(R.string.key), this);
         }
     }
 

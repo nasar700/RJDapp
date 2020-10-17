@@ -37,6 +37,18 @@ public class FullScreenImage extends AppCompatActivity implements ImageClickList
         AdsManagerUtil.showAdMObBanner(this, adsMobBanner);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
     private void showData(){
         if(getIntent().getExtras() != null){
             imageUrl = getIntent().getExtras().getString(Constants.imageId);

@@ -46,6 +46,18 @@ public class HomeActivity extends AppCompatActivity implements VideoClickListene
         fetchVideoData();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
     private void showBanner(){
         LinearLayout adsMobBanner = findViewById(R.id.mainLayout);
         AdsManagerUtil.showAdMObBanner(this, adsMobBanner);

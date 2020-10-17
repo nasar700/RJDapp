@@ -36,6 +36,18 @@ public class MoreActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AdsManagerUtil.stopInterstitialAd();
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
 

@@ -12,7 +12,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.laluyadav.rjd.data.Constants;
 
-
 public class AdsManagerUtil {
 
     private static final String TAG = AdsManagerUtil.class.getSimpleName();
@@ -84,6 +83,12 @@ public class AdsManagerUtil {
                 mInterstitialAd.loadAd(new AdRequest.Builder().build());
             }
 
+            @Override
+            public void onAdLoaded() {
+                if(mInterstitialAd != null){
+                    mInterstitialAd.show();
+                }
+            }
         });
     }
 
@@ -92,11 +97,16 @@ public class AdsManagerUtil {
             count = 0;
             return;
         }
-        if (mInterstitialAd.isLoaded()) {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             count++;
             mInterstitialAd.show();
         } else {
             Log.d("TAG", "The interstitial wasn't loaded yet.");
         }
+    }
+
+    public static void stopInterstitialAd(){
+        mInterstitialAd.setAdListener(null);
+        mInterstitialAd = null;
     }
 }
